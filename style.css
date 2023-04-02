@@ -44,3 +44,9 @@ input {
 .required {
 	color: red;
 }
+
+
+.errorBorder{
+   border:1px solid red;
+  
+}
