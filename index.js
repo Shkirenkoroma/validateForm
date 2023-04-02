@@ -78,7 +78,8 @@ function getFieldDate() {
 function putDataDate() {
 	if (
 		inputDate.value === "Обязательное поле" ||
-		inputDate.value === "Неверный формат даты"
+		inputDate.value === "Неверный формат даты" ||
+		inputDate.value === "Дата еще не наступила"
 	) {
 		inputDate.value = "";
 	}
@@ -168,7 +169,6 @@ inputDoublePassword.addEventListener("input", getDoublePassword);
 inputDoublePassword.addEventListener("blur", getFieldDoublePassword);
 inputDoublePassword.addEventListener("focus", putDataDoublePassword);
 
-
 function getDoublePassword() {
 	console.log("input data");
 }
@@ -181,7 +181,7 @@ function getFieldDoublePassword() {
 	if (inputDoublePassword.value !== inputPassword.value) {
 		inputDoublePassword.value = "Пароль не соответствует";
 		inputDoublePassword.className = "required";
-	}  
+	}
 }
 
 function putDataDoublePassword() {
@@ -191,24 +191,21 @@ function putDataDoublePassword() {
 	) {
 		inputDoublePassword.value = "";
 		inputDoublePassword.className = "usuallyState";
-	} 
+	}
 }
-const submit = document.querySelector(".submit");
 
 const sentData = async () => {
-	let newPerson = {
-	title: 'person',
-	body:`[surname:${inputPassword.value}, name:${inputDoublePassword.value}]` ,
-	userId: 2,
-};
-	console.log("myPost", myPost);
 	const url = "https://jsonplaceholder.typicode.com/posts";
+	let newPerson = {
+		title: "person",
+		body: `name:${inputName.value},surname:${inputSurName.value}, date:${inputDate.value}, email:${inputMail.value},password:${inputPassword.value},
+	doublepassword:${inputDoublePassword.value}`,
+		userId: 2,
+	};
+	console.log("body of request", newPerson);
 	const response = await fetch(url, {
 		method: "POST",
 		body: JSON.stringify(newPerson),
-		headers: {
-			"content-type": "application/json",
-		},
 	});
 	if (!response.ok) {
 		throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`);
@@ -216,4 +213,8 @@ const sentData = async () => {
 	return await response.json();
 };
 
-submit.addEventListener("click", sentData);
+const form = document.getElementById("formElem");
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	sentData();
+});
