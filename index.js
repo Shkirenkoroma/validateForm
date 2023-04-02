@@ -118,3 +118,102 @@ function putDataMail() {
 		inputMail.value = "";
 	}
 }
+const inputPassword = document.getElementById("password");
+inputPassword.addEventListener("input", getPassword);
+inputPassword.addEventListener("blur", getFieldPassword);
+inputPassword.addEventListener("focus", putDataPassword);
+
+function getPassword() {
+	console.log("input data");
+}
+
+function getFieldPassword() {
+	const isCapital = (letter) => !(letter === letter.toLowerCase());
+	const regExpNumber = /[0-9]/;
+	const regExpSymbol = /[!@#$%]/;
+	if (inputPassword.value === "") {
+		inputPassword.value = "Обязательное поле";
+		inputPassword.className = "required";
+	} else if (inputPassword.value.length < 8) {
+		inputPassword.value = "Необходимо ввести не менее 8 символов";
+		inputPassword.className = "required";
+	} else if (!isCapital(inputPassword.value)) {
+		inputPassword.value = "Минимум 1 символ в верхнем регистре";
+		inputPassword.className = "required";
+	} else if (!regExpNumber.test(inputPassword.value)) {
+		inputPassword.value = "Минимум одна цифра 1-9";
+		inputPassword.className = "required";
+	} else if (!regExpSymbol.test(inputPassword.value)) {
+		inputPassword.value = "Минимум 1 символ из перечисленных !@#$%";
+		inputPassword.className = "required";
+	}
+}
+
+function putDataPassword() {
+	if (
+		(inputPassword.value =
+			"Обязательное поле" ||
+			inputPassword.value === "Необходимо ввести не менее 8 символов" ||
+			inputPassword.value === "Минимум 1 символ в верхнем регистре") ||
+		inputPassword.value === "Минимум одна цифра 1-9" ||
+		inputPassword.value === "Минимум 1 символ из перечисленных !@#$%"
+	) {
+		inputPassword.value = "";
+		inputPassword.className = "usuallyState";
+	}
+}
+
+const inputDoublePassword = document.getElementById("doublepassword");
+inputDoublePassword.addEventListener("input", getDoublePassword);
+inputDoublePassword.addEventListener("blur", getFieldDoublePassword);
+inputDoublePassword.addEventListener("focus", putDataDoublePassword);
+
+
+function getDoublePassword() {
+	console.log("input data");
+}
+
+function getFieldDoublePassword() {
+	if (inputDoublePassword.value === "") {
+		inputDoublePassword.value = "Обязательное поле";
+		inputDoublePassword.className = "required";
+	}
+	if (inputDoublePassword.value !== inputPassword.value) {
+		inputDoublePassword.value = "Пароль не соответствует";
+		inputDoublePassword.className = "required";
+	}  
+}
+
+function putDataDoublePassword() {
+	if (
+		inputDoublePassword.value === "Обязательное поле" ||
+		inputDoublePassword.value === "Пароль не соответствует"
+	) {
+		inputDoublePassword.value = "";
+		inputDoublePassword.className = "usuallyState";
+	} 
+}
+const submit = document.querySelector(".submit");
+
+const sentData = async () => {
+	let newPerson = {
+	title: 'person',
+	body:`[surname:${inputPassword.value}, name:${inputDoublePassword.value}]` ,
+	userId: 2,
+};
+	console.log("myPost", myPost);
+	const url = "https://jsonplaceholder.typicode.com/posts";
+	const response = await fetch(url, {
+		method: "POST",
+		body: JSON.stringify(newPerson),
+		headers: {
+			"content-type": "application/json",
+		},
+	});
+	if (!response.ok) {
+		throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`);
+	}
+	return await response.json();
+};
+
+submit.addEventListener("click", sentData);

@@ -11,47 +11,81 @@
 		<main class="main__container">
 			<h2 class="main__container_title">Validate Form</h2>
 			<section class="main__container__content">
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input id="name" class="usuallyState" type="text" placeholder="Введите имя" required minlength="2" maxlength="25"/>
-				</div>
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input id="surname" class="usuallyState" type="text" placeholder="Введите фамилию" required minlength="2" maxlength="25" />
-				</div>
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input
-						id="birthday"
-						type="text"
-                  class="usuallyState"
-						placeholder="Введите дату рождения в формате ДД.ММ.ГГ" required
-					/>
-				</div>
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input
-						id="email"
-						type="text"
-						placeholder="Введите электронную почту" required
-						class="usuallyState"
-					/>
-				</div>
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input id="password" type="text" placeholder="Введите пароль" required/>
-				</div>
-				<div class="main__container__content-input">
-					<span class="main__container__content-required">*</span>
-					<input
-						id="completedpassword"
-						type="text"
-						placeholder="Подтвердите пароль" 
-                  required
-					/>
-				</div>
+				<form
+					class="main__container__content-form"
+					action="https://jsonplaceholder.typicode.com/posts"
+					method="POST"
+					
+				>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="name"
+							class="usuallyState"
+							type="text"
+							placeholder="Введите имя"
+							required
+							minlength="2"
+							maxlength="25"
+						/>
+					</div>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="surname"
+							class="usuallyState"
+							type="text"
+							placeholder="Введите фамилию"
+							required
+							minlength="2"
+							maxlength="25"
+						/>
+					</div>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="birthday"
+							type="text"
+							class="usuallyState"
+							placeholder="Введите дату рождения в формате ДД.ММ.ГГ"
+							required
+						/>
+					</div>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="email"
+							type="text"
+							placeholder="Введите электронную почту"
+							required
+							class="usuallyState"
+						/>
+					</div>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="password"
+							type="text"
+							placeholder="Введите пароль"
+							required
+							minlength="8"
+							class="usuallyState"
+						/>
+					</div>
+					<div class="main__container__content-input">
+						<span class="main__container__content-required">*</span>
+						<input
+							id="doublepassword"
+							type="text"
+							placeholder="Подтвердите пароль"
+							required
+							class="usuallyState"
+						/>
+					</div>
+					<button class="submit">Отправить</button>
+				</form>
 			</section>
 		</main>
-      <script src="./index.js"></script>
+		<script src="./index.js"></script>
 	</body>
 </html>
