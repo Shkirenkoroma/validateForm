@@ -205,6 +205,9 @@ const sentData = async () => {
 	console.log("body of request", newPerson);
 	const response = await fetch(url, {
 		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
 		body: JSON.stringify(newPerson),
 	});
 	if (!response.ok) {
@@ -215,6 +218,18 @@ const sentData = async () => {
 
 const form = document.getElementById("formElem");
 form.addEventListener("submit", (e) => {
-	e.preventDefault();
-	sentData();
+	if (
+		inputName.value !== "Обязательное поле" &&
+		inputSurName.value !== "Обязательное поле" &&
+		inputDate.value !== "Обязательное поле" &&
+		inputMail.value !== "Обязательное поле" &&
+		inputPassword.value !== "Обязательное поле" &&
+		inputDoublePassword.value !== "Обязательное поле"
+	) {
+		e.preventDefault();
+		sentData();
+	} else {
+		e.preventDefault();
+		alert("Необходимо заполнить все поля");
+	}
 });
