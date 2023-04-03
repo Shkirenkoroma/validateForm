@@ -95,7 +95,6 @@ function getMail() {
 	if (inputMail.className === "required") {
 		inputMail.className = "usuallyState";
 	}
-	console.log("ada");
 }
 
 function getFieldMail() {
@@ -119,13 +118,14 @@ function putDataMail() {
 		inputMail.value = "";
 	}
 }
+
 const inputPassword = document.getElementById("password");
 inputPassword.addEventListener("input", getPassword);
 inputPassword.addEventListener("blur", getFieldPassword);
 inputPassword.addEventListener("focus", putDataPassword);
 
 function getPassword() {
-	console.log("input data");
+	inputPassword.type = "password";
 }
 
 function getFieldPassword() {
@@ -133,18 +133,23 @@ function getFieldPassword() {
 	const regExpNumber = /[0-9]/;
 	const regExpSymbol = /[!@#$%]/;
 	if (inputPassword.value === "") {
+		inputPassword.type = "text";
 		inputPassword.value = "Обязательное поле";
 		inputPassword.className = "required";
 	} else if (inputPassword.value.length < 8) {
+		inputPassword.type = "text";
 		inputPassword.value = "Необходимо ввести не менее 8 символов";
 		inputPassword.className = "required";
 	} else if (!isCapital(inputPassword.value)) {
+		inputPassword.type = "text";
 		inputPassword.value = "Минимум 1 символ в верхнем регистре";
 		inputPassword.className = "required";
 	} else if (!regExpNumber.test(inputPassword.value)) {
+		inputPassword.type = "text";
 		inputPassword.value = "Минимум одна цифра 1-9";
 		inputPassword.className = "required";
 	} else if (!regExpSymbol.test(inputPassword.value)) {
+		inputPassword.type = "text";
 		inputPassword.value = "Минимум 1 символ из перечисленных !@#$%";
 		inputPassword.className = "required";
 	}
@@ -170,15 +175,17 @@ inputDoublePassword.addEventListener("blur", getFieldDoublePassword);
 inputDoublePassword.addEventListener("focus", putDataDoublePassword);
 
 function getDoublePassword() {
-	console.log("input data");
+	inputDoublePassword.type = "password";
 }
 
 function getFieldDoublePassword() {
 	if (inputDoublePassword.value === "") {
+		inputDoublePassword.type = "text";
 		inputDoublePassword.value = "Обязательное поле";
 		inputDoublePassword.className = "required";
 	}
 	if (inputDoublePassword.value !== inputPassword.value) {
+		inputDoublePassword.type = "text";
 		inputDoublePassword.value = "Пароль не соответствует";
 		inputDoublePassword.className = "required";
 	}
