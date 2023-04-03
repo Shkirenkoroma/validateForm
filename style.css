@@ -1,5 +1,5 @@
 body {
-	background-color: #cdcdcdcd;
+	background:linear-gradient(#39bad3, #d0b2b3);
 }
 
 input {
@@ -14,12 +14,18 @@ input {
 .main__container {
 	max-width: 700px;
 	width: 100%;
-	min-height: calc(100vh - 100px);
-	background-color: #fdfdfd;
+	min-height: calc(100vh - 16px);
+	background: linear-gradient(#7ceef1, #975a5a);
 	margin: 0 auto;
 	text-align: center;
+	border-radius:10px;
 }
-
+.main__container_title{
+	margin:0;
+	padding-top: 50px;
+	font-family: 'Fasthand', cursive;
+	font-size: 40px;
+}
 .main__container__content {
 	display: flex;
 	flex-direction: column;
@@ -64,12 +70,52 @@ input {
 	margin-top: 100px;
 	border-radius: 10px;
 	padding: 10px;
-	background-color: transparent;
-	border: 1px solid #cdcdcd;
+	border: none;
+	background-image: linear-gradient(60deg, #2ae1d869 50%, #42a7c3 30%);
+	background-position: 99%;
+	background-size: 400%;
 }
 
 .submit:hover {
 	cursor: pointer;
 	background-color: #cdcdcd;
 	transition: all 700ms;
+	background-position: 0;
+}
+
+
+@media (max-width:560px){
+	.main__container__content-required{
+		margin-left: 15px;
+	}
+	#name{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+	#surname{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+	#birthday{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+	#email{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+	#password{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
+	#doublepassword{
+		width: 90%;
+		margin: 0 auto;
+		font-size: 10px;
+	}
 }
