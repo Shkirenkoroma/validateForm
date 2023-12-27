@@ -1,4 +1,5 @@
-### Live-версия проекта доступна по ссылке https://shkirenkoroma.github.io/validateForm/
+#### Live-версия проекта доступна по ссылке: https://shkirenkoroma.github.io/validateForm/
+
 Проект "Регистрационная форма"
 ![image](https://user-images.githubusercontent.com/61347452/229460375-7ea70957-a153-4756-9d18-a6c0e7e4ca67.png)
 В каждом из полей продумана логика валидации. Каждый input обязателен к заполнению, о чем говориться в всплывающей подсказке
